@@ -21,10 +21,24 @@ export default class Environment {
     }
     setEnvironmentMap(){
         this.environmentMap = {}
-        this.environmentMap.intensity = 0.4
+        this.environmentMap.intensity = 0.46
         this.environmentMap.texture = this.resources.items.environmentMapTexture
         this.environmentMap.texture.colorSpace = THREE.SRGBColorSpace
 
         this.scene.environment = this.environmentMap.texture
+        this.environmentMap.updateMaterials = ()=>{
+            this.scene.traverse((child)=>{
+                // console.log(child)
+                if(child instanceof THREE.Mesh && child.material instanceof THREE.MeshStandardMaterial){
+                    child.material.envMap = this.environmentMap.texture
+                    child.material.envMapIntensity = this.environmentMap.intensity
+                    child.material.needsUpdate = true
+                }
+            })
+        }
+        this.environmentMap.updateMaterials()
+
     }
+
+    
 }
