@@ -7,6 +7,7 @@ export default class World {
         this.experience = new Experience()
         
         this.scene = this.experience.scene
+        this.resources = this.experience.resources
 
         const testMesh = new THREE.Mesh(
             new THREE.BoxGeometry(1,1,1),
@@ -16,6 +17,16 @@ export default class World {
         )
         this.scene.add(testMesh)
 
-        this.environment = new Environment()
+        // load resources ready
+        this.experience.resources.on('ready',()=>{
+            console.log("Resources Are Ready")
+            // Setup
+            this.environment = new Environment()
+        })
+
+        
+
+
+
     }
 }
