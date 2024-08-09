@@ -1,5 +1,10 @@
 export default [
     {
+        name: 'foxModel',
+        type: 'gltfModel',
+        path: 'models/Fox/glTF-Binary/Fox.glb'
+    },
+    {
         name: 'environmentMapTexture',
         type: 'cubeTexture',
         path: [

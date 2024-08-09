@@ -11,7 +11,7 @@ export default class Environment {
     }
 
     setSunlight(){
-        this.sunlight  = new THREE.DirectionalLight('#ffffff', 4)
+        this.sunlight  = new THREE.DirectionalLight('#ffffff', 3)
         this.sunlight.castShadow = true
         this.sunlight.shadow.camera.far = 15
         this.sunlight.shadow.mapSize.set(1024, 1024)
@@ -28,7 +28,6 @@ export default class Environment {
         this.scene.environment = this.environmentMap.texture
         this.environmentMap.updateMaterials = ()=>{
             this.scene.traverse((child)=>{
-                // console.log(child)
                 if(child instanceof THREE.Mesh && child.material instanceof THREE.MeshStandardMaterial){
                     child.material.envMap = this.environmentMap.texture
                     child.material.envMapIntensity = this.environmentMap.intensity
