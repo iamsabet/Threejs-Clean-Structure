@@ -13,8 +13,7 @@ pnpm run dev
 
 # access with debug at localhost:5173/#debug
 
-![image](image.png)
-
+![image](./image.png)
 
 # Build for production in the dist/ directory
 pnpm run build
