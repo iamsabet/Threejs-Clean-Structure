@@ -13,7 +13,7 @@ pnpm run dev
 
 # access with debug at localhost:5173/#debug
 
-![image]([./image.png](https://github.com/iamsabet/Threejs-Clean-Structure/blob/4056bb6225742a02a163302ca0010368f53f9c79/image.png)
+![image](https://github.com/iamsabet/Threejs-Clean-Structure/blob/4056bb6225742a02a163302ca0010368f53f9c79/image.png)
 
 # Build for production in the dist/ directory
 pnpm run build
