@@ -40,6 +40,16 @@ export default class Experience{
         })
         window.experience = this
 
+        if(this.debug.active){
+            this.debugFolder = this.debug.ui.addFolder('experience')
+            const debugObject = {
+                clean : () =>{
+                    this.destroy()
+                }
+            }
+            this.debugFolder.add(debugObject, 'clean').name('Destroy World')
+        }
+
     }
 
     resize(){
@@ -50,5 +60,37 @@ export default class Experience{
         this.camera.update()
         this.world.update()
         this.renderer.update()
+    }
+    destroy (){
+        // on more complicated projects each object should have it's own destroy method
+        // this.camera.destroy()
+        // this.renderer.destroy()
+        // this.debugFolder.destroy()
+        // this.world.destroy()
+        // ....
+
+        this.sizes.off('toto')
+        this.time.off('tick')
+        // traverse the whole seen
+        this.scene.traverse((item)=>{
+            if(item instanceof THREE.Mesh){
+                item.geometry.dispose()
+            
+                for(const key in item.material){
+                    const value = item.material[key]
+                    if(value && typeof value.dispose === "function"){
+                        value.dispose()
+                    }
+                }
+            }
+        })
+
+        // this.scene.clear()
+        this.camera.controls.dispose()
+        this.renderer.instance.dispose()
+        if(this.debug.active){
+            this.debug.ui.destroy()
+        }
+        this.sizes.dispose()
     }
 }

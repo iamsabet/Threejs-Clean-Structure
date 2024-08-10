@@ -31,15 +31,15 @@ export default class Environment {
                 
             this.debugFoolder
                 .add(this.sunlight.position, 'x')
-                .name("Sunligh Position X").min(-10).max(10).step(0.001)
+                .name("Sunligh X").min(-10).max(10).step(0.001)
 
             this.debugFoolder
                 .add(this.sunlight.position, 'y')
-                .name("Sunligh Position Y").min(-10).max(10).step(0.001)
+                .name("Sunligh Y").min(-10).max(10).step(0.001)
 
             this.debugFoolder
                 .add(this.sunlight.position, 'z')
-                .name("Sunligh Position Z").min(-10).max(10).step(0.001)
+                .name("Sunligh Z").min(-10).max(10).step(0.001)
         }
 
     }
