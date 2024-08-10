@@ -6,6 +6,7 @@ import * as THREE from "three"
 import World from "./World/World"
 import Resources from "./Utils/Resources"
 import Sources from "./Sources"
+import Debug from "./Utils/Debug"
 // singleton approach
 let instance = null
 
@@ -15,9 +16,11 @@ export default class Experience{
         if(instance)
             return instance
         instance = this
+        
         // setup canvas
         this.canvas = canvas
         //setup
+        this.debug = new Debug()
         this.time = new Time()
         this.sizes = new Sizes()
         
@@ -35,6 +38,7 @@ export default class Experience{
         this.time.on('tick',()=>{
             this.update()
         })
+        window.experience = this
 
     }
 
